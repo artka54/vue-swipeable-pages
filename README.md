@@ -27,7 +27,7 @@ export default store
 
 ```
 
-Proceed with instalation:
+Proceed with the installation:
 
 ```javascript
 import store from './store' // use your own store or create as mentioned above
