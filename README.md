@@ -35,7 +35,7 @@ Vue.use(vsp, { store })
 
 ## Usage
 
-```javascript
+```vue
 <vsp-container>
         <vsp-page slot="page" route="/"></vsp-page>
         <vsp-page slot="page" route="/second-page"></vsp-page>
@@ -48,7 +48,7 @@ Vue.use(vsp, { store })
 ```
 
 
-```javascript
+```css
 And you can customize main elements with this css:
 
 /* Page container */
