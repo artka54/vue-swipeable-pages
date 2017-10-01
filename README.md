@@ -12,7 +12,7 @@ npm install vue-swipeable-pages --save
 ```
 
 You must have a store, in case you do not have it already create a store.js file in your src and add this code:
-```javascript
+```vue
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
@@ -27,7 +27,7 @@ export default store
 
 Proceed with instalation:
 
-```javascript
+```vue
 import store from './store' // use your own store or create as mentioned above
 import { vsp } from './index.js'
 Vue.use(vsp, { store })
