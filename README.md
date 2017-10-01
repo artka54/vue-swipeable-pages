@@ -80,6 +80,14 @@ And you can customize main elements with this css:
 }
 ```
 
+#Edge cases
+##Temporarily disable swipeable pages
+In case you have a responsive table that enables horizontal scrolling or another element you want to swipe horizontally, you would have to disable the swiping to the next tab when swiping your element e.g:
+
+    this.$el.querySelector('#myResponsiveTable').addEventListener('touchmove', function (e) {
+      e.stopPropagation()
+    })
+
 ## License
 MIT
 
