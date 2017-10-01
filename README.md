@@ -1,6 +1,6 @@
 # vue-swipeable-pages
 
-> A Vue.js plugin that enables swipeable pages with each swipeable page corresponding to your specified route.
+> A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.
 
 ## Demo
 
