@@ -1,0 +1,7 @@
+#vsp-page-container {
+    max-width:1024px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #d8d8d8;
+}

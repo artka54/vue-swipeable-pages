@@ -1,0 +1,65 @@
+#swipeable-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    overflow: hidden;
+    padding-bottom: 60px; /* Offsetting the height of the pagination at the bottom so the bottom of the page is visible.
+    So this must have the same value as height of this element: .swipeable-pagination-btn
+    */
+}
+
+#swipeable-wrapper .swipeable-page {
+    background-color: #f1f1f1;
+    width: 100%;
+    flex-shrink: 0;
+    transform: translate3d(0%, 0, 0);
+}
+
+.swipeable-animate { 
+    transition: transform 0.3s ease-out;
+}
+
+
+/* Swipeable pagination */
+
+#swipeable-pagination {
+/*    background-color: rgba(2,136,209,1);*/
+    background-color: #ff5252;
+    display: flex;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#swipeable-pagination .swipeable-pagination-btn {
+    text-align: center;
+    cursor: pointer;
+     -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      user-select: none;  
+}
+
+#swipeable-pagination > div {
+    font-size: 2.25em;
+    line-height: 60px;
+    color: darkred;
+}
+
+#swipeable-pagination > div.active {
+    color: yellow;
+}
+
+
+#pagination-moving-line {
+    border-top: 3px solid yellow;
+    position: absolute;
+    top:0;
+    left:0;
+    content: '';
+    display: block;
+    height: 1px;
+    transition: left 0.3s ease-out;   
+}
