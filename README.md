@@ -4,8 +4,6 @@
 
 ## Demo
 
-## Recomended usage
-
 ## Install
 ```bash
 npm install vue-swipeable-pages --save
@@ -17,7 +15,7 @@ import { vsp } from './index.js'
 Vue.use(vsp, { store })
 ```
 
-# store.js Requirement
+
 You must have a store, in case you do not have it already, create a store.js file in your /src and add this code:
 
 ```javascript
