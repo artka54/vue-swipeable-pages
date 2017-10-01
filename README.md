@@ -48,8 +48,8 @@ Vue.use(vsp, { store })
 ```
 
 
-```css
 And you can customize main elements with this css:
+```css
 
 /* Page container */
 #vsp-page-container {
