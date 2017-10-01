@@ -4,7 +4,7 @@
   "description": "A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.",
   "main": "src/index.js",
   "author": "Arturs Kalnins <artka54@gmail.com>",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
