@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1></h1>
+    <h1>vue-swipeable-pages</h1>
+    <h2>{{ msg }}</h2>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -116,7 +117,7 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-  margin:0;
+  margin:20px 0px 0px 20px;
   padding: 0;
 }
 
@@ -132,5 +133,9 @@ li {
 
 a {
   color: #42b983;
+}
+    
+ul {
+  margin:20px 0px 0px 20px;
 }
 </style>
