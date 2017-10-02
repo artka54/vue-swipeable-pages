@@ -3,6 +3,7 @@
 > A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.
 
 ## Demo
+https://artka54.github.io/vue-swipeable-pages/
 
 ## Install
 ```bash
