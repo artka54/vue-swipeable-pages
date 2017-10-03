@@ -215,7 +215,6 @@
             this.pagesCount = this.pages.length
             
             this.pageWidth = this.pagesWrapper.offsetWidth
-            
             this.paginationMovingLine = this.$el.querySelector('#pagination-moving-line')
             this.paginationBtnsWidth = 100 / this.pagesCount
             this.paginationMovingLine.style.width = this.paginationBtnsWidth + '%'

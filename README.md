@@ -2,6 +2,10 @@
 
 > A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.
 
+# Warning a bug
+So at the moment if you have enough content that it creates a vertical scroller it somehow breaks the swiping down the road on some cases (e.g shows a part of another page after being swiped).
+I am trying to resolve this issue in the following days.
+
 ## Demo
 https://artka54.github.io/vue-swipeable-pages/
 
