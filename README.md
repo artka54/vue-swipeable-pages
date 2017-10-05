@@ -2,10 +2,6 @@
 
 > A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.
 
-# Warning a bug
-So at the moment if you have enough content that it creates a vertical scroller it somehow breaks the swiping down the road on some cases (e.g shows a part of another page after being swiped).
-I am trying to resolve this issue in the following days.
-
 ## Demo
 https://artka54.github.io/vue-swipeable-pages/
 
@@ -94,6 +90,19 @@ this.$el.querySelector('#myResponsiveTable').addEventListener('touchmove', funct
   e.stopPropagation()
 })
 ```
+
+
+## Know bugs
+There is a bug on ipad safari (possible on iphones too). When swiping the page the code doesn't block the vertical scrolling. I am going to look into it the following days.
+
+## To Do
+#Fix a bug mentioned above
+#Improve transitions between pages as at the moment you can't see content when the next page is seen while swiping.
+
+
+## Change log
+v1.0.8 - fixed a bug when swiped pages where not correctly positioned if some pages contained vertical scrolling
+
 
 ## License
 MIT
