@@ -1,6 +1,6 @@
 {
   "name": "vue-swipeable-pages",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Vue.js plugin that enables swipeable pages, with each swipeable page corresponding to a route from vue-router.",
   "main": "src/index.js",
   "author": "Arturs Kalnins <artka54@gmail.com>",
