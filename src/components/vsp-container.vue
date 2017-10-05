@@ -114,11 +114,11 @@
                 
                 if (this.touchMovedYDistance < this.touchMovedYTreshold || this.pageIsMoving == true ) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
                     
-                    // TEst. Changed line.
-                    document.documentElement.style.overflow = 'hidden' // disable vertical scrolling while swiping horizontally
-                    
                     if (this.touchMovedXDistance < this.pageWidth * (this.pagesCount - 1)) { // This is not the last tab, so It can be swiped further
                         this.pageIsMoving = true
+                        
+                       document.documentElement.style.overflowY = 'hidden' // disable vertical scrolling while swiping horizontally
+                        
                         for (let i = 0; i < this.pagesCount; i++) {
                             this.$store.commit('vspstore/transform', this.touchMovedXDistance)
                         }
@@ -146,7 +146,7 @@
                    }
                     this.movePage()
                     this.touchMoveX = 0 // After touch has ended reset the touch move (Otherwise on next click script will think touch has been moved and there will be swipe again)
-                    document.documentElement.style.overflow = 'auto' // when the swiping ends restore the ability to scroll vertically
+                    document.documentElement.style.overflowY = 'auto' // when the swiping ends restore the ability to scroll vertically
                 }
             },
             
