@@ -168,6 +168,7 @@
                 this.pagesWrapper.style.width = '100%' // lets fill the pagesWrapper to all rescaled window
                 this.pageWidth = this.pagesWrapper.offsetWidth // let's get that size in the pixels
                 this.pagesWrapper.style.width = this.pageWidth + 'px' // set that size consistent across the pages in order to be able to correctly position the swiped pages
+                document.body.style.overflowY = 'auto' // let's return the vertical scroller if needed
                 
                 for (let i = 0; i < this.pagesCount; i++) {
                     this.pages[i].classList.remove('swipeable-animate')
