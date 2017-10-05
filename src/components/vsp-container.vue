@@ -113,9 +113,12 @@
                 this.touchMovedYDistance = Math.abs(this.touchStartY - this.touchMoveY)
                 
                 if (this.touchMovedYDistance < this.touchMovedYTreshold || this.pageIsMoving == true ) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
+                    
+                    // TEst. Changed line.
+                    document.documentElement.style.overflow = 'hidden' // disable vertical scrolling while swiping horizontally
+                    
                     if (this.touchMovedXDistance < this.pageWidth * (this.pagesCount - 1)) { // This is not the last tab, so It can be swiped further
                         this.pageIsMoving = true
-                        document.documentElement.style.overflow = 'hidden' // disable vertical scrolling while swiping horizontally
                         for (let i = 0; i < this.pagesCount; i++) {
                             this.$store.commit('vspstore/transform', this.touchMovedXDistance)
                         }
@@ -158,8 +161,14 @@
              * Recalculate the page width AND position the current page accordingly to the new wrapper width
              */
             recalcPageWidth () {
-                this.pageWidth = this.pagesWrapper.offsetWidth
-
+                
+                // When calculating the current page width remove the vertical scroller in order 
+                // to have a consisten page width
+                document.body.style.overflowY = 'hidden'
+                this.pagesWrapper.style.width = '100%' // lets fill the pagesWrapper to all rescaled window
+                this.pageWidth = this.pagesWrapper.offsetWidth // let's get that size in the pixels
+                this.pagesWrapper.style.width = this.pageWidth + 'px' // set that size consistent across the pages in order to be able to correctly position the swiped pages
+                
                 for (let i = 0; i < this.pagesCount; i++) {
                     this.pages[i].classList.remove('swipeable-animate')
                     this.$store.commit('vspstore/transform', this.$store.state.vspstore.currentPageIndex * this.pageWidth)
@@ -214,7 +223,15 @@
             this.pages = this.pagesWrapper.children
             this.pagesCount = this.pages.length
             
+            
+            
+            // When calculating the current page width remove the vertical scroller in order 
+            // to have a consisten page width
+            document.body.style.overflowY = 'hidden'
             this.pageWidth = this.pagesWrapper.offsetWidth
+            this.pagesWrapper.style.width = this.pageWidth + 'px' // every page will have this width
+            document.body.style.overflowY = 'auto' // let's return the vertical scroller if needed
+            
             this.paginationMovingLine = this.$el.querySelector('#pagination-moving-line')
             this.paginationBtnsWidth = 100 / this.pagesCount
             this.paginationMovingLine.style.width = this.paginationBtnsWidth + '%'
@@ -227,7 +244,7 @@
             window.addEventListener('resize', () => this.recalcPageWidth())
             
             this.mapRoutesToIndex()
-
+            
             this.initialLoad(this.$route.path)
         }
     }

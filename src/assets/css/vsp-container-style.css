@@ -1,3 +1,9 @@
+/* body overflow-x is hidden because the width of current view in the window is fixated as the width would be without the vertical scroller and when there is vertical scroller the width overflows on the scroller part attached by the browser.
+The width in this component's javascript is always calculated temporarily removing the vertical scrolling in order to have a consistent width of the window view across all the swipe views as it is required to determine correct x positions how far to swipe each page as the scroller messes with that */
+body {
+    overflow-x: hidden; 
+}
+
 #swipeable-wrapper {
     width: 100%;
     height: auto;
