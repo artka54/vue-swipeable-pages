@@ -92,15 +92,15 @@ this.$el.querySelector('#myResponsiveTable').addEventListener('touchmove', funct
 ```
 
 
-## Know bugs
-There is a bug on ipad safari (possible on iphones too). When swiping the page the code doesn't block the vertical scrolling. I am going to look into it the following days.
-
 ## To Do
-#Fix a bug mentioned above
-#Improve transitions between pages as at the moment you can't see content when the next page is seen while swiping.
+#Improve transitions between pages as at the moment you can't see content when the next page is seen while swiping. (Possibly add lazy load)
 
 
 ## Change log
+v1.0.10:
+- fixed an incosistency in ios safari, when swiping to sides the vertical scroller would still be active.
+- now you have to swipe more to the sided than up/down in order to start the swipeable behaviour (though, there is also a minimum treshold for swiping on x axis)
+
 v1.0.8 - fixed a bug when swiped pages where not correctly positioned if some pages contained vertical scrolling
 
 

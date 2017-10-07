@@ -26,7 +26,7 @@
                 touchStartY: 0,
                 touchMoveX: 0,
                 touchMoveY: 0,
-                touchMovedXDistance: 0,  
+                touchMovedXDistanceAbsolute: 0,  
                 touchMovedYDistance: 0,  
                 pageIsMoving: false,
                 longTouch: 'undefined',
@@ -109,18 +109,27 @@
             touchMoving (event) {
                 this.touchMoveX = event.touches[0].pageX // x coordinates of where the touch is at the moment
                 this.touchMoveY = event.touches[0].pageY // y coordinates of where the touch is at the moment
-                this.touchMovedXDistance = this.$store.state.vspstore.currentPageIndex * this.pageWidth + (this.touchStartX - this.touchMoveX)
+                this.touchMovedXDistanceAbsolute = this.$store.state.vspstore.currentPageIndex * this.pageWidth + (this.touchStartX - this.touchMoveX)
                 this.touchMovedYDistance = Math.abs(this.touchStartY - this.touchMoveY)
+                this.touchMovedXDistance = Math.abs(this.touchStartX - this.touchMoveX)
+    
                 
-                if (this.touchMovedYDistance < this.touchMovedYTreshold || this.pageIsMoving == true ) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
+                
+                if ((this.touchMovedYDistance < this.touchMovedYTreshold && this.touchMovedYDistance < this.touchMovedXDistance) || (this.pageIsMoving == true )) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
                     
-                    if (this.touchMovedXDistance < this.pageWidth * (this.pagesCount - 1)) { // This is not the last tab, so It can be swiped further
+                    if (this.touchMovedXDistanceAbsolute < this.pageWidth * (this.pagesCount - 1)) { // This is not the last tab, so It can be swiped further
                         this.pageIsMoving = true
                         
-                       document.documentElement.style.overflowY = 'hidden' // disable vertical scrolling while swiping horizontally
+                        
+                        // Disable vertical scrolling while swiping
+                        document.body.style.overflowY = 'hidden' // disable vertical scrolling while swiping horizontally
+                        // The same as above but for ios safari
+                        document.ontouchmove = function(event){
+                            event.preventDefault();
+                        }
                         
                         for (let i = 0; i < this.pagesCount; i++) {
-                            this.$store.commit('vspstore/transform', this.touchMovedXDistance)
+                            this.$store.commit('vspstore/transform', this.touchMovedXDistanceAbsolute)
                         }
                     }
                 }
@@ -137,16 +146,21 @@
                 if (this.touchMoveX !== 0) { // If touch has not been moved do nothing. Only click/tap is no good.
                    if (this.touchMovedYDistance < this.touchMovedYTreshold || this.pageIsMoving == true ) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
                         if (absoluteMove > this.pageWidth / 2 || this.longTouch === false) { // If swiped at least over half or fast swipe* check further requirements
-                            if (this.touchMovedXDistance > sliderOffset && this.$store.state.vspstore.currentPageIndex < (this.pagesCount - 1)) {
+                            if (this.touchMovedXDistanceAbsolute > sliderOffset && this.$store.state.vspstore.currentPageIndex < (this.pagesCount - 1)) {
                                 this.$store.state.vspstore.currentPageIndex++
-                            } else if (this.touchMovedXDistance < sliderOffset && this.$store.state.vspstore.currentPageIndex > 0) {
+                            } else if (this.touchMovedXDistanceAbsolute < sliderOffset && this.$store.state.vspstore.currentPageIndex > 0) {
                                 this.$store.state.vspstore.currentPageIndex--
                             }
                         }
                    }
                     this.movePage()
                     this.touchMoveX = 0 // After touch has ended reset the touch move (Otherwise on next click script will think touch has been moved and there will be swipe again)
-                    document.documentElement.style.overflowY = 'auto' // when the swiping ends restore the ability to scroll vertically
+                    
+                    
+                    // when the swiping ends restore the ability to scroll vertically
+                    document.body.style.overflowY = 'auto' 
+                    // The same as above but for ios safari
+                    document.ontouchmove = function(e){ return true; }
                 }
             },
             
