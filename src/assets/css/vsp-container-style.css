@@ -29,7 +29,7 @@ body {
 
 #swipeable-pagination {
 /*    background-color: rgba(2,136,209,1);*/
-    background-color: #ff5252;
+/*    background-color: #ff5252;*/
     display: flex;
     height: 60px;
     width: 100%;
@@ -50,16 +50,16 @@ body {
 #swipeable-pagination > div {
     font-size: 2.25em;
     line-height: 60px;
-    color: darkred;
+/*    color: darkred;*/
 }
 
 #swipeable-pagination > div.active {
-    color: yellow;
+/*    color: yellow;*/
 }
 
 
 #pagination-moving-line {
-    border-top: 3px solid yellow;
+/*    border-top: 3px solid yellow;*/
     position: absolute;
     top:0;
     left:0;
