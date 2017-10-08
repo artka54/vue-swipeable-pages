@@ -97,6 +97,10 @@ this.$el.querySelector('#myResponsiveTable').addEventListener('touchmove', funct
 
 
 ## Change log
+v1.1.0:
+- Made styling colors of the navigation less opinionated, however the style definitions of colors are now required to install properly the component
+
+
 v1.0.10:
 - fixed an incosistency in ios safari, when swiping to sides the vertical scroller would still be active.
 - now you have to swipe more to the sided than up/down in order to start the swipeable behaviour (though, there is also a minimum treshold for swiping on x axis)
