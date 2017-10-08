@@ -15,7 +15,6 @@ body {
 }
 
 #swipeable-wrapper .swipeable-page {
-    background-color: #f1f1f1;
     width: 100%;
     flex-shrink: 0;
     transform: translate3d(0%, 0, 0);
