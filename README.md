@@ -97,6 +97,9 @@ this.$el.querySelector('#myResponsiveTable').addEventListener('touchmove', funct
 
 
 ## Change log
+v1.1.1:
+- Fine tuned the treshold to start up swiping behaviour
+
 v1.1.0:
 - Made styling colors of the navigation less opinionated, however the style definitions of colors are now required to install properly the component
 
