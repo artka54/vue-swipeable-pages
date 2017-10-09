@@ -31,6 +31,7 @@
                 pageIsMoving: false,
                 longTouch: 'undefined',
                 touchMovedYTreshold: 10,
+                weightOnY: 20, // user has to swipe more on x axis plus this number than he is swiping on y axis to initiate the swipe e.g x > y +20  
                 paginationMovingLine: 'undefined',
                 paginationBtns: 'undefined',
                 paginationBtnsWidth: 0,
@@ -113,9 +114,8 @@
                 this.touchMovedYDistance = Math.abs(this.touchStartY - this.touchMoveY)
                 this.touchMovedXDistance = Math.abs(this.touchStartX - this.touchMoveX)
     
-                
-                
-                if ((this.touchMovedYDistance < this.touchMovedYTreshold && this.touchMovedYDistance < this.touchMovedXDistance) || (this.pageIsMoving == true )) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
+                // If this conditions are fulfilled only then initiate the swiping
+                if ((this.touchMovedYDistance < this.touchMovedYTreshold && this.touchMovedYDistance + this.weightOnY < this.touchMovedXDistance) || (this.pageIsMoving == true )) { // So that user does not get next slide inadvertently by scrolling Y axis. If the page is already moving continue
                     
                     if (this.touchMovedXDistanceAbsolute < this.pageWidth * (this.pagesCount - 1)) { // This is not the last tab, so It can be swiped further
                         this.pageIsMoving = true
@@ -128,8 +128,13 @@
                             event.preventDefault();
                         }
                         
+                        // As we initiate the swipe only after user has swiped exceeding the weightOnY pxs we
+                        // have to add or subtract that value of the actual touch coordinates in order
+                        // for the swipe to start at the edge and not at the position of the finger
+                        let val = this.touchStartX - this.touchMoveX < 0 ? +this.weightOnY  : -this.weightOnY 
+                        
                         for (let i = 0; i < this.pagesCount; i++) {
-                            this.$store.commit('vspstore/transform', this.touchMovedXDistanceAbsolute)
+                            this.$store.commit('vspstore/transform', this.touchMovedXDistanceAbsolute + val)
                         }
                     }
                 }
